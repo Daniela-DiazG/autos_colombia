@@ -1,3 +1,7 @@
+import { useState } from 'react';
+import {G,T} from '../styles/global';
+import Icons from '../components/Icons';
+
 function Login({ onLogin }) {
   const [form, setForm] = useState({ user:"", pass:"" });
   const [err,  setErr]  = useState("");
@@ -6,8 +10,7 @@ function Login({ onLogin }) {
   const handle = async () => {
     if (!form.user || !form.pass) { setErr("Ingresa usuario y contraseña."); return; }
     setLoading(true); setErr("");
-    // Si tienes endpoint de auth: await apiFetch("/auth/login", { method:"POST", body:JSON.stringify(form) })
-    // Por ahora validación local hasta tener el endpoint
+    // Como no tenemos servicio de autenticacion, por ahora validación local hasta tener el endpoint
     await new Promise(r => setTimeout(r, 400));
     if (form.user === "admin" && form.pass === "1234") { onLogin(); }
     else { setErr("Credenciales incorrectas. Usa admin / 1234"); }
@@ -18,8 +21,8 @@ function Login({ onLogin }) {
     <div style={{ minHeight:"100vh", background:T.bgPage, display:"flex", alignItems:"center", justifyContent:"center" }}>
       <div style={{ background:"#fff", borderRadius:16, padding:"40px", width:360, boxShadow:"0 12px 40px rgba(30,80,70,0.12)" }}>
         <div style={{ textAlign:"center", marginBottom:28 }}>
-          <div style={{ width:52, height:52, background:T.teal, borderRadius:14, display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 12px" }}>
-            <Icon.car />
+          <div style={{ padding:10, width:52, height:52, background:T.teal, borderRadius:14, display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 12px" }}>
+            <Icons name="car" />
           </div>
           <div style={{ fontSize:18, fontWeight:700, color:T.textDark }}>Autos Colombia</div>
           <div style={{ fontSize:12, color:T.textMid, marginTop:3 }}>Sistema de parqueadero</div>

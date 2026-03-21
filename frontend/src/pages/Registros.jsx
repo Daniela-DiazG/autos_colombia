@@ -1,3 +1,10 @@
+import { useState } from 'react';
+import {G,T} from '../styles/global';
+import useApi from '../hooks/useApi';
+import Spinner from '../components/Spinner';
+import ApiError from '../components/ApiError';
+import Icons from '../components/Icons';
+
 function Registros() {
   const { data, loading, error, reload } = useApi("/registros");
   const { data: vehiculos }              = useApi("/vehiculos");
@@ -42,7 +49,7 @@ function Registros() {
           <div style={G.pageTitle}>Registros</div>
           <div style={G.pageSubtitle}>Entradas y salidas de vehículos</div>
         </div>
-        <button style={G.btnPrimary} onClick={() => setModal(true)}><Icon.plus /> Registrar entrada</button>
+        <button style={G.btnPrimary} onClick={() => setModal(true)}><Icons name="plus" /> Registrar entrada</button>
       </div>
 
       <Alert alert={alert} />
@@ -50,7 +57,7 @@ function Registros() {
 
       <div style={G.card}>
         <div style={G.searchBar}>
-          <Icon.search />
+          <Icons name="search" />
           <input style={G.searchInput} placeholder="Buscar por placa o tipo..."
             value={search} onChange={e => setSearch(e.target.value)} />
         </div>
@@ -106,7 +113,7 @@ function Registros() {
           <div style={{ display:"flex", gap:10, justifyContent:"flex-end", marginTop:8 }}>
             <button style={G.btnSecondary} onClick={() => setModal(false)}>Cancelar</button>
             <button style={{ ...G.btnPrimary, opacity: saving?0.7:1 }} onClick={registrarEntrada} disabled={saving}>
-              <Icon.check /> {saving ? "Registrando..." : "Registrar"}
+              <Icons name="check" /> {saving ? "Registrando..." : "Registrar"}
             </button>
           </div>
         </Modal>

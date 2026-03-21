@@ -1,3 +1,13 @@
+import  { useState } from 'react';
+import {G,T} from './styles/global';
+import Icons from './components/Icons';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Vehiculos from './pages/Vehiculos';
+import Usuarios from './pages/Usuarios';
+import Celdas from './pages/Celdas';
+import Registros from './pages/Registros';
+
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [view,     setView]     = useState("dashboard");
@@ -5,11 +15,11 @@ export default function App() {
   if (!loggedIn) return <Login onLogin={() => setLoggedIn(true)} />;
 
   const navItems = [
-    { key:"dashboard", label:"Dashboard", icon:<Icon.dash /> },
-    { key:"vehiculos", label:"Vehículos", icon:<Icon.car /> },
-    { key:"usuarios",  label:"Usuarios",  icon:<Icon.users /> },
-    { key:"celdas",    label:"Celdas",    icon:<Icon.grid /> },
-    { key:"registros", label:"Registros", icon:<Icon.list /> },
+    { key:"dashboard", label:"Dashboard", icon:<Icons name={"dash"} /> },
+    { key:"vehiculos", label:"Vehículos", icon:<Icons name={"car"} /> },
+    { key:"usuarios",  label:"Usuarios",  icon:<Icons name={"users"} /> },
+    { key:"celdas",    label:"Celdas",    icon:<Icons name={"grid"} /> },
+    { key:"registros", label:"Registros", icon:<Icons name={"list"} /> },
   ];
 
   return (
@@ -18,7 +28,7 @@ export default function App() {
         <div style={G.sidebarLogo}>
           <div style={{ display:"flex", alignItems:"center", gap:10 }}>
             <div style={{ width:32, height:32, background:T.tealMid, borderRadius:8, display:"flex", alignItems:"center", justifyContent:"center" }}>
-              <Icon.car />
+              <Icons name={"car"} />
             </div>
             <div>
               <div style={G.sidebarLogoText}>Autos Colombia</div>
@@ -35,7 +45,7 @@ export default function App() {
         </nav>
         <div style={{ padding:"16px 20px", borderTop:"1px solid rgba(255,255,255,0.08)" }}>
           <div style={{ ...G.navItem(false), borderLeft:"none" }} onClick={() => setLoggedIn(false)}>
-            <Icon.logout /> Cerrar sesión
+            <Icons name={"logout"} /> Cerrar sesión
           </div>
         </div>
       </aside>

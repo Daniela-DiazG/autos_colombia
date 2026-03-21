@@ -1,3 +1,5 @@
+import {G,T} from "../styles/global";
+
 function ApiError({ msg, onRetry }) {
   return (
     <div style={{ ...G.alert("error"), display:"flex", justifyContent:"space-between", alignItems:"center" }}>

@@ -1,3 +1,5 @@
+import {G,T} from '../styles/global';
+
 function Modal({ title, onClose, children }) {
   return (
     <div style={G.modal}>

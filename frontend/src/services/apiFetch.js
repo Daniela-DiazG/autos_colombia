@@ -10,3 +10,4 @@ async function apiFetch(path, options = {}) {
   if (!res.ok) throw new Error(data.error || "Error en el servidor.");
   return data;
 }
+export default apiFetch;

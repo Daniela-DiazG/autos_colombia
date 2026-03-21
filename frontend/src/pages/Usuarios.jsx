@@ -1,3 +1,11 @@
+import { useState } from 'react';
+import {G,T} from '../styles/global';
+import useApi from '../hooks/useApi';
+import Spinner from '../components/Spinner';
+import ApiError from '../components/ApiError';
+import Icons from '../components/Icons';
+import apiFetch from '../services/apiFetch';
+
 function Usuarios() {
   const { data, loading, error, reload } = useApi("/usuarios");
   const [modal,  setModal]  = useState(false);
@@ -45,7 +53,7 @@ function Usuarios() {
           <div style={G.pageTitle}>Usuarios</div>
           <div style={G.pageSubtitle}>{usuarios.length} activos</div>
         </div>
-        <button style={G.btnPrimary} onClick={() => setModal(true)}><Icon.plus /> Nuevo usuario</button>
+        <button style={G.btnPrimary} onClick={() => setModal(true)}><Icons name="plus" /> Nuevo usuario</button>
       </div>
 
       <Alert alert={alert} />
@@ -53,7 +61,7 @@ function Usuarios() {
 
       <div style={G.card}>
         <div style={G.searchBar}>
-          <Icon.search />
+          <Icons name="search" />
           <input style={G.searchInput} placeholder="Buscar por nombre, documento o placa..."
             value={search} onChange={e => setSearch(e.target.value)} />
         </div>
@@ -123,7 +131,7 @@ function Usuarios() {
           <div style={{ display:"flex", gap:10, justifyContent:"flex-end", marginTop:8 }}>
             <button style={G.btnSecondary} onClick={() => setModal(false)}>Cancelar</button>
             <button style={{ ...G.btnPrimary, opacity: saving?0.7:1 }} onClick={guardar} disabled={saving}>
-              <Icon.check /> {saving ? "Registrando..." : "Registrar"}
+              <Icons name="check" /> {saving ? "Registrando..." : "Registrar"}
             </button>
           </div>
         </Modal>

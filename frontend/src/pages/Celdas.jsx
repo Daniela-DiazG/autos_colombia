@@ -1,3 +1,9 @@
+import {G,T} from '../styles/global';
+import useApi from '../hooks/useApi';
+import Spinner from '../components/Spinner';
+import ApiError from '../components/ApiError';
+import Icons from '../components/Icons';
+
 function Celdas() {
   const { data, loading, error, reload } = useApi("/celdas");
   const celdas = data || [];
@@ -11,7 +17,7 @@ function Celdas() {
           <div style={G.pageTitle}>Celdas</div>
           <div style={G.pageSubtitle}>{disp} disponibles · {ocup} ocupadas</div>
         </div>
-        <button style={G.btnSecondary} onClick={reload}><Icon.refresh /> Actualizar</button>
+        <button style={G.btnSecondary} onClick={reload}><Icons name="refresh" /> Actualizar</button>
       </div>
 
       {error && <ApiError msg={error} onRetry={reload} />}

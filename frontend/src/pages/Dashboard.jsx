@@ -1,3 +1,9 @@
+import {G,T} from '../styles/global';
+import useApi from '../hooks/useApi';
+import Spinner from '../components/Spinner';
+import ApiError from '../components/ApiError';
+import Icons from '../components/Icons';
+
 function Dashboard() {
   const { data: usuarios,  loading: lu, error: eu, reload: ru } = useApi("/usuarios");
   const { data: celdas,    loading: lc, error: ec, reload: rc } = useApi("/celdas");
@@ -29,7 +35,7 @@ function Dashboard() {
           <div style={G.pageSubtitle}>Resumen en tiempo real</div>
         </div>
         <button style={G.btnSecondary} onClick={() => { ru(); rc(); rv(); rr(); }}>
-          <Icon.refresh /> Actualizar
+          <Icons name="refresh" /> Actualizar
         </button>
       </div>
 
