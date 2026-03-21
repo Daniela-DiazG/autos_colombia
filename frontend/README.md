@@ -1,4 +1,4 @@
-Evidencia de Aprendizaje 1. Diseño Sistema de Información – Iteración 2
+Evidencia de Aprendizaje 2. Diseño Sistema de Información – Iteración 2
 
 Curso: Ingeniería de software
 
