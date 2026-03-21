@@ -16,7 +16,7 @@ export default function App() {
 
   const navItems = [
     { key:"dashboard", label:"Dashboard", icon:<Icons name={"dash"} /> },
-    { key:"vehiculos", label:"Vehículos", icon:<Icons name={"car"} /> },
+    { key:"vehiculos", label:"Vehículos", icon:<Icons name={"car"} size={16}/> },
     { key:"usuarios",  label:"Usuarios",  icon:<Icons name={"users"} /> },
     { key:"celdas",    label:"Celdas",    icon:<Icons name={"grid"} /> },
     { key:"registros", label:"Registros", icon:<Icons name={"list"} /> },

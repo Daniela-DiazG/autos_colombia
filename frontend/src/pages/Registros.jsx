@@ -4,6 +4,9 @@ import useApi from '../hooks/useApi';
 import Spinner from '../components/Spinner';
 import ApiError from '../components/ApiError';
 import Icons from '../components/Icons';
+import Alert from '../components/Alert';
+import Modal from '../components/Modal';
+import apiFetch from '../services/apiFetch';
 
 function Registros() {
   const { data, loading, error, reload } = useApi("/registros");
