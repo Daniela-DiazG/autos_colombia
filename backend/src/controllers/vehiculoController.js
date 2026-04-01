@@ -24,4 +24,19 @@ const crear = (req, res) => {
   });
 };
 
-module.exports = { listar, crear };
+const obtenerDetalles = (req, res) => {
+  const { placa } = req.params;
+  if (!placa) return res.status(400).json({ error: 'La placa es obligatoria.' });
+
+  vehiculoModel.obtenerDetallesPorPlaca(placa.toUpperCase(), (err, data) => {
+    if (err) {
+      if (err.kind === 'not_found') {
+        return res.status(404).json({ error: 'No se encontró el vehículo.' });
+      }
+      return res.status(500).json({ error: 'Error al consultar vehículo.' });
+    }
+    res.json(data);
+  });
+};
+
+module.exports = { listar, crear, obtenerDetalles };

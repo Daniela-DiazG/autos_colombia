@@ -22,8 +22,11 @@ app.use('/api/registros', registrosRoutes);
 
 const usuariosRoutes = require('./src/routes/usuarios');
 const celdasRoutes   = require('./src/routes/celdas');
+const pagosRoutes    = require('./src/routes/pagos');
+
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/celdas',   celdasRoutes);
+app.use('/api/pagos',    pagosRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>

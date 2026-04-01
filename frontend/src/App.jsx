@@ -7,6 +7,7 @@ import Vehiculos from './pages/Vehiculos';
 import Usuarios from './pages/Usuarios';
 import Celdas from './pages/Celdas';
 import Registros from './pages/Registros';
+import ConsultarPlaca from './pages/ConsultarPlaca';
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -20,6 +21,7 @@ export default function App() {
     { key:"usuarios",  label:"Usuarios",  icon:<Icons name={"users"} /> },
     { key:"celdas",    label:"Celdas",    icon:<Icons name={"grid"} /> },
     { key:"registros", label:"Registros", icon:<Icons name={"list"} /> },
+    { key:"consultar_placa", label:"Consultar placa", icon:<Icons name={"search"} /> },
   ];
 
   return (
@@ -56,6 +58,7 @@ export default function App() {
         {view === "usuarios"  && <Usuarios />}
         {view === "celdas"    && <Celdas />}
         {view === "registros" && <Registros />}
+        {view === "consultar_placa" && <ConsultarPlaca />}
       </main>
     </div>
   );

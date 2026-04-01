@@ -14,4 +14,25 @@ const obtenerTodos = (callback) => {
   db.query('SELECT * FROM vehiculo', callback);
 };
 
-module.exports = { crear, obtenerTodos };
+const obtenerDetallesPorPlaca = (placa, callback) => {
+  const query = `
+    SELECT 
+      v.placa, 
+      v.tipo, 
+      u.fecha_vencimiento, 
+      c.id_celda as celda_asignada, 
+      u.nombre as nombre_dueno, 
+      u.telefono 
+    FROM vehiculo v
+    LEFT JOIN usuario u ON v.placa = u.placa
+    LEFT JOIN celda c ON u.id_celda = c.id_celda
+    WHERE v.placa = ?
+  `;
+  db.query(query, [placa], (err, results) => {
+    if (err) return callback(err);
+    if (results.length === 0) return callback({ kind: 'not_found' }, null);
+    callback(null, results[0]);
+  });
+};
+
+module.exports = { crear, obtenerTodos, obtenerDetallesPorPlaca };
